@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  minecraft:
+    image: itzg/minecraft-server
+    ports:
+      - "25565:25565"
+    volumes:
+      - ./data:/data
+      - ./config:/config
+    environment:
+      EULA: "TRUE"
+      VERSION: 1.19
+      TYPE: SPIGOT
+      SPIGET_RESOURCES: 94387
+      MOTD: xKostekLucGames Minecraft Server
+      ENFORCE_WHITELIST: "true"
+      ENABLE_WHITELIST: "true"
+      WHITELIST_FILE: config/whitelist.json
+      OPS_FILE: config/ops.json
+      ICON: https://yt3.ggpht.com/-kfmtr7XKhRb8fAWp1QtV4kkLhGikvhIupXqaeG70RTKMHzWbRdc0-0zOnncx2Iwi-3RShdujA=s88-c-k-c0x00ffffff-no-rj
+      ENABLE_ROLLING_LOGS: "true"
+      LOG_TIMESTAMP: "true"
+      TZ: Europe/Warsaw
+    restart: always
+#  mc01:
+#    image: itzg/minecraft-server
+#    environment:
+#      EULA: "TRUE"
+#  mc02:
+#    image: itzg/minecraft-server
+#    environment:
+#      EULA: "TRUE"
+#  router:
+#    image: itzg/mc-router
+#    ports:
+#      - 25565:25565
+#    command: --mapping=minecraft.home.lan=minecraft:25565,mc01.home.lan=mc01:25565,mc02.home.lan=mc02:25565
